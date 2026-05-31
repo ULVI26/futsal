@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yaprak Futsal Performans Gelişim Kulübü</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --red: #e63946;
+            --dark: #1d1d2e;
+            --dark-soft: #2a2a3d;
+            --light-bg: #f4f4f8;
+            --card-bg: #ffffff;
+            --section-alt: #eef0f7;
+            --vision-bg: #1d1d2e;
+            --text-main: #1d1d2e;
+            --text-muted: #5c5c7a;
+            --footer-text: #a0a0b8;
+            --border: #dddde8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        header {
+            background-color: var(--dark);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--dark-soft);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            color: var(--red);
+            font-size: 24px;
+        }
+
+        .logo-text {
+            font-weight: 800;
+            font-size: 16px;
+            line-height: 1.1;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        .logo-text span {
+            display: block;
+            font-size: 11px;
+            font-weight: 400;
+            color: var(--footer-text);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #d0d0e8;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--red);
+            text-decoration: underline;
+            text-underline-offset: 5px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            color: #fff;
+        }
+
+        .login-btn {
+            color: #d0d0e8;
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+
+        .login-btn:hover { color: #fff; }
+
+        .login-btn i { color: var(--red); }
+
+        .cart-icon {
+            position: relative;
+            font-size: 18px;
+            cursor: pointer;
+            color: #d0d0e8;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background-color: var(--red);
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 50%;
+        }
+
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        /* HERO */
+        .hero-section {
+            margin-top: 65px;
+            display: flex;
+            height: calc(100vh - 65px);
+            min-height: 600px;
+            background-color: var(--light-bg);
+        }
+
+        .hero-left {
+            flex: 1;
+            padding: 80px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: var(--light-bg);
+            height: 100%;
+        }
+
+        .red-line {
+            width: 80px;
+            height: 4px;
+            background-color: var(--red);
+            margin-bottom: 30px;
+            border-radius: 2px;
+        }
+
+        .hero-left h1 {
+            font-size: calc(32px + 2vw);
+            font-weight: 900;
+            line-height: 0.95;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .hero-left h1 span {
+            color: var(--red);
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            line-height: 1.6;
+            max-width: 400px;
+        }
+
+        .cta-btn {
+            background-color: var(--red);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: fit-content;
+            box-shadow: 0 6px 20px rgba(230, 57, 70, 0.35);
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-btn:hover {
+            background-color: #c0303c;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(230, 57, 70, 0.45);
+        }
+
+        .hero-right {
+            flex: 1;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .hero-right img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+
+        /* SERVICES */
+        .services-section {
+            padding: 100px 50px;
+            background-color: var(--light-bg);
+        }
+
+        .section-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--red);
+            margin-bottom: 12px;
+        }
+
+        .services-section h2 {
+            font-size: calc(26px + 1vw);
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 50px;
+            letter-spacing: -1px;
+            color: var(--dark);
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 36px 28px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(29, 29, 46, 0.1);
+            border-color: var(--red);
+        }
+
+        .card-number {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--section-alt);
+            line-height: 1;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--dark);
+            display: inline-block;
+            vertical-align: top;
+            margin-top: 5px;
+            line-height: 1.2;
+        }
+
+        .card-text {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.7;
+            margin: 24px 0 20px 0;
+            flex-grow: 1;
+        }
+
+        .detail-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background-color: var(--section-alt);
+            color: var(--dark);
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background-color 0.3s, color 0.3s;
+            width: fit-content;
+            border: 1px solid var(--border);
+        }
+
+        .detail-btn:hover {
+            background-color: var(--red);
+            color: white;
+            border-color: var(--red);
+        }
+
+        /* VISION */
+        .vision-section {
+            display: flex;
+            background-color: var(--dark);
+            align-items: stretch;
+        }
+
+        .vision-left {
+            flex: 1;
+            padding: 100px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .vision-left .section-label {
+            color: #7b7baa;
+        }
+
+        .vision-left h2 {
+            font-size: calc(28px + 1.5vw);
+            font-weight: 900;
+            line-height: 1.0;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+            color: #ffffff;
+        }
+
+        .vision-left h2 span {
+            color: var(--red);
+        }
+
+        .vision-left p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #a0a0c0;
+            max-width: 520px;
+        }
+
+        .vision-right {
+            flex: 1;
+            min-height: 550px;
+            align-self: stretch;
+            overflow: hidden;
+        }
+
+        .vision-right img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        /* CONTACT */
+        .contact-section {
+            padding: 100px 50px;
+            background-color: var(--section-alt);
+            display: flex;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .contact-info h2 {
+            font-size: calc(24px + 1vw);
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+            color: var(--dark);
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 36px;
+            line-height: 1.6;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .contact-method i {
+            color: var(--red);
+            font-size: 20px;
+            width: 42px;
+            height: 42px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+        }
+
+        .contact-method a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .contact-method a:hover { color: var(--red); }
+
+        .contact-form {
+            flex: 1.2;
+            min-width: 280px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 14px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--border);
+            background-color: #fff;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            color: var(--text-main);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--red);
+            box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
+        }
+
+        .contact-form textarea {
+            height: 130px;
+            resize: none;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 50px;
+            text-align: center;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--dark-soft);
+            padding-bottom: 40px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-brand {
+            font-size: calc(28px + 2vw);
+            font-weight: 900;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            margin: 20px 0 8px 0;
+        }
+
+        .footer-brand span {
+            color: var(--red);
+        }
+
+        .footer-tagline {
+            color: var(--footer-text);
+            font-size: 13px;
+            margin-bottom: 24px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-icons a {
+            color: #a0a0b8;
+            background-color: var(--dark-soft);
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 15px;
+            transition: background-color 0.3s, color 0.3s;
+            border: 1px solid #3a3a55;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--red);
+            color: white;
+            border-color: var(--red);
+        }
+
+        .footer-bottom {
+            color: #5c5c7a;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            border-top: 1px solid var(--dark-soft);
+            padding-top: 24px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 968px) {
+            header { padding: 15px 25px; }
+            .menu-toggle { display: block; }
+
+            nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 65px;
+                left: 0;
+                width: 100%;
+                background-color: var(--dark);
+                padding: 20px;
+                border-bottom: 1px solid var(--dark-soft);
+                gap: 15px;
+            }
+
+            nav.open { display: flex; }
+
+            .hero-section {
+                flex-direction: column;
+                height: auto;
+                min-height: auto;
+            }
+
+            .hero-left {
+                padding: 60px 20px;
+                text-align: center;
+                align-items: center;
+                height: auto;
+            }
+
+            .hero-subtitle { margin: 0 auto 40px auto; }
+
+            .hero-right {
+                width: 100%;
+                height: 350px;
+            }
+
+            .services-section,
+            .contact-section { padding-left: 20px; padding-right: 20px; }
+
+            .vision-section { flex-direction: column-reverse; }
+            .vision-left { padding: 50px 20px; text-align: center; }
+            .vision-left p { margin: 0 auto; }
+
+            .vision-right {
+                min-height: 350px;
+                width: 100%;
+            }
+
+            .form-row { flex-direction: column; gap: 14px; }
+
+            .footer-top,
+            .footer-bottom { flex-direction: column; text-align: center; }
+
+            .social-icons { justify-content: center; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="#" class="logo-area">
+            <i class="fa-solid fa-futbol logo-icon"></i>
+            <div class="logo-text">
+                Yaprak Futsal Performans Gelişim Kulübü
+                <span>Performance</span>
+            </div>
+        </a>
+        <nav id="navbar">
+            <a href="#" class="active">Ana Sayfa</a>
+            <a href="#randevu">Online Randevu</a>
+            <a href="#programlar">Program Listesi</a>
+            <a href="#iletisim">İletişim</a>
+        </nav>
+        <div class="nav-right">
+            <a href="#login" class="login-btn">
+                <i class="fa-solid fa-circle-user"></i> Log In
+            </a>
+            <div class="cart-icon">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <span class="cart-badge">0</span>
+            </div>
+            <i class="fa-solid fa-bars menu-toggle" onclick="toggleMenu()"></i>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-left">
+            <div class="red-line"></div>
+            <h1>Yaprak Futsal<br><span>Performans</span><br>Gelişim Kulübü</h1>
+            <p class="hero-subtitle">Sahada fark yaratmak isteyenler için profesyonel futsal antrenman programları.</p>
+            <button class="cta-btn">Kulübe Üyelik Başvurusu</button>
+        </div>
+        <div class="hero-right">
+            <img src="https://images.unsplash.com/photo-1763775468707-573c7cd6b0da?q=80&w=1025&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Futsal Hero">
+        </div>
+    </section>
+
+    <section class="services-section" id="programlar">
+        <p class="section-label">Hizmetlerimiz</p>
+        <h2>Özel Hizmetimiz</h2>
+        <div class="cards-container">
+            <div class="service-card">
+                <div>
+                    <span class="card-number">01</span>
+                    <span class="card-title">Top<br>Hakimiyeti</span>
+                </div>
+                <p class="card-text">
+                    Dar alanda top kontrolü, çalım ve yön değiştirme becerilerinizi geliştirerek rakiplerinize üstünlük sağlayın.
+                </p>
+                <a href="#" class="detail-btn">Detaylı Bilgi <i class="fa-solid fa-arrow-right" style="font-size:11px;"></i></a>
+            </div>
+            <div class="service-card">
+                <div>
+                    <span class="card-number">02</span>
+                    <span class="card-title">Hız<br>ve Çeviklik</span>
+                </div>
+                <p class="card-text">
+                    Ani yön değişimleri, kısa mesafe sprintler ve reaksiyon çalışmalarıyla hareket kabiliyetiniz artırılıyor.
+                </p>
+                <a href="#" class="detail-btn">Detaylı Bilgi <i class="fa-solid fa-arrow-right" style="font-size:11px;"></i></a>
+            </div>
+            <div class="service-card">
+                <div>
+                    <span class="card-number">03</span>
+                    <span class="card-title">Bireysel<br>Taktik</span>
+                </div>
+                <p class="card-text">
+                    Pozisyon alma, boş alan yaratma ve doğru karar verme becerileriyle oyunu daha iyi okuyun.
+                </p>
+                <a href="#" class="detail-btn">Detaylı Bilgi <i class="fa-solid fa-arrow-right" style="font-size:11px;"></i></a>
+            </div>
+            <div class="service-card">
+                <div>
+                    <span class="card-number">04</span>
+                    <span class="card-title">Performans<br>Gelişimi</span>
+                </div>
+                <p class="card-text">
+                    Kuvvet, dayanıklılık ve mental hazırlık çalışmalarıyla potansiyelinizi en üst seviyeye çıkarın.
+                </p>
+                <a href="#" class="detail-btn">Detaylı Bilgi <i class="fa-solid fa-arrow-right" style="font-size:11px;"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="vision-section">
+        <div class="vision-left">
+            <p class="section-label">Vizyonumuz</p>
+            <h2>Yaprak Futsal İle<br>Gelişimi Beraber<br><span>Gözlemleyelim</span></h2>
+            <p>
+                Hızın, tekniğin ve oyun zekâsının buluştuğu futsal dünyasına hoş geldiniz. Modern antrenman yöntemleriyle hazırlanan programlarımız, oyuncuların bireysel becerilerini geliştirmelerine ve sahada maksimum performans göstermelerine yardımcı olur.
+                <br><br>
+                Top kontrolünden şut tekniklerine, çeviklik çalışmalarından taktiksel farkındalığa kadar her alanda gelişim odaklı eğitimler sunuyoruz.
+            </p>
+        </div>
+        <div class="vision-right">
+            <img src="https://images.unsplash.com/photo-1763775594018-4a84eeadd83d?q=80&w=1025&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Futsal Vizyon">
+        </div>
+    </section>
+
+    <section class="contact-section" id="iletisim">
+        <div class="contact-info">
+            <p class="section-label">Bize Ulaşın</p>
+            <h2>İletişim Bilgileri</h2>
+            <p>Sorularınız ve üyelik için bizimle iletişime geçebilirsiniz.</p>
+            <div class="contact-method">
+                <i class="fa-solid fa-phone"></i>
+                <a href="tel:+905518912575">+90 551 891 25 75</a>
+            </div>
+            <div class="contact-method">
+                <i class="fa-solid fa-envelope"></i>
+                <a href="mailto:busraertas02@icloud.com">busraertas02@icloud.com</a>
+            </div>
+        </div>
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Mesajınız başarıyla gönderildi!');">
+            <div class="form-row">
+                <input type="text" placeholder="İsim" required>
+                <input type="email" placeholder="E-posta" required>
+            </div>
+            <input type="text" placeholder="Konu">
+            <textarea placeholder="Mesajınız" required></textarea>
+            <button type="submit" class="cta-btn" style="border-radius: 8px; padding: 14px 32px;">Gönder</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-top">
+            <a href="#" class="footer-logo">
+                <i class="fa-solid fa-futbol logo-icon"></i>
+                <div class="logo-text" style="color: white;">Yaprak Futsal<span>Gelişim</span></div>
+            </a>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+        <div class="footer-brand">YAPRAK <span>FUTSAL</span></div>
+        <p class="footer-tagline">Performans · Gelişim · Zafer</p>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Yaprak Futsal Performans Gelişim Kulübü. Tüm Hakları Saklıdır.</p>
+            <p>Built with passion for futsal.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('navbar');
+            nav.classList.toggle('open');
+        }
+    </script>
+
+</body>
+</html>
