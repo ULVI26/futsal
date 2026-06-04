@@ -230,6 +230,65 @@
             display: block;
         }
 
+        /* HAKKIMDA (KULÜBÜMÜZ) */
+        .about-section {
+            padding: 100px 50px;
+            background-color: var(--section-alt);
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: calc(26px + 1vw);
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            color: var(--dark);
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .stat-card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+
+        .stat-card h3 {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--red);
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
         /* SERVICES */
         .services-section {
             padding: 100px 50px;
@@ -604,8 +663,11 @@
                 height: 350px;
             }
 
+            .about-section,
             .services-section,
             .contact-section { padding-left: 20px; padding-right: 20px; }
+
+            .about-container { grid-template-columns: 1fr; gap: 30px; text-align: center; }
 
             .vision-section { flex-direction: column-reverse; }
             .vision-left { padding: 50px 20px; text-align: center; }
@@ -638,7 +700,7 @@
         </a>
         <nav id="navbar">
             <a href="#" class="active">Ana Sayfa</a>
-            <a href="#randevu">Online Randevu</a>
+            <a href="#hakkimizda">Hakkımızda</a>
             <a href="#programlar">Program Listesi</a>
             <a href="#iletisim">İletişim</a>
         </nav>
@@ -659,10 +721,39 @@
             <div class="red-line"></div>
             <h1>Yaprak Futsal<br><span>Performans</span><br>Gelişim Kulübü</h1>
             <p class="hero-subtitle">Sahada fark yaratmak isteyenler için profesyonel futsal antrenman programları.</p>
-            <button class="cta-btn">Kulübe Üyelik Başvurusu</button>
+            <button class="cta-btn" onclick="location.href='#iletisim'">Kulübe Üyelik Başvurusu</button>
         </div>
         <div class="hero-right">
             <img src="https://images.unsplash.com/photo-1763775468707-573c7cd6b0da?q=80&w=1025&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Futsal Hero">
+        </div>
+    </section>
+
+    <section class="about-section" id="hakkimizda">
+        <div class="about-container">
+            <div class="about-text">
+                <p class="section-label">Biz Kimiz?</p>
+                <h2>Kulübümüz Hakkında</h2>
+                <p>Yaprak Futsal Performans Gelişim Kulübü, dinamik yapısıyla sporcuların potansiyellerini en üst seviyeye çıkarmayı hedefleyen modern bir spor organizasyonudur. Hız, zekâ ve yüksek teknik beceriler gerektiren futsal branşında profesyonel standartlarda eğitim modelleri sunuyoruz.</p>
+                <p>Amacımız, her yaş grubundan ve yetenek seviyesinden sporcuya taktiksel farkındalık kazandırmak, fiziksel kapasitelerini artırmak ve rekabetçi turnuvalara en hazır şekilde hazırlamaktır. Uzman kadromuzla sahada disiplini ve başarıyı odağımıza alıyoruz.</p>
+            </div>
+            <div class="about-stats">
+                <div class="stat-card">
+                    <h3>10+</h3>
+                    <p>Deneyimli Antrenör</p>
+                </div>
+                <div class="stat-card">
+                    <h3>250+</h3>
+                    <p>Aktif Sporcu</p>
+                </div>
+                <div class="stat-card">
+                    <h3>15+</h3>
+                    <p>Kupa ve Başarı</p>
+                </div>
+                <div class="stat-card">
+                    <h3>%100</h3>
+                    <p>Gelişim Odaklılık</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -718,7 +809,7 @@
             <p class="section-label">Vizyonumuz</p>
             <h2>Yaprak Futsal İle<br>Gelişimi Beraber<br><span>Gözlemleyelim</span></h2>
             <p>
-                Hızın, tekniğin ve oyun zekâsının buluştuğu futsal dünyasına hoş geldiniz. Modern antrenman yöntemleriyle hazırlanan programlarımız, oyuncuların bireysel becerilerini geliştirmelerine ve sahada maksimum performans göstermelerine yardımcı olur.
+                Hızın, tekniğin ve oyun zekâsının buluştuğu futsal dünyasına hoş geldiniz. Modern antrenman yöntemleriyle hazırlanan programlarımız, oyuncuların bireysel becerilerini geliştirmelerine dairy ve sahada maksimum performans göstermelerine yardımcı olur.
                 <br><br>
                 Top kontrolünden şut tekniklerine, çeviklik çalışmalarından taktiksel farkındalığa kadar her alanda gelişim odaklı eğitimler sunuyoruz.
             </p>
